@@ -380,6 +380,11 @@ function game() {
   var interaction = checkSquareCollide(x, y, width, height, true);
   switch (interaction.block) {
     case 2:
+      if (level > bestLevel) {
+        menu = 2;
+        currentLevel = level;
+        break;
+      }
       level++;
       if (level > bestLevel) {
         bestLevel = level;
@@ -568,39 +573,41 @@ function game() {
   
   
   //Draw text
+  if (level <= bestLevel) {
   ctx.textAlign = "left";
-  if (level === 0) {
-    ctx.fillStyle = "rgb(150, 150, 150)";
-    ctx.font = "24px monospace";
-    ctx.fillText("W", 143-finalCameraX, 420-finalCameraY);
-    ctx.fillText("A S D", 114-finalCameraX, 450-finalCameraY);
-    ctx.font = "18px monospace"
-    ctx.fillText("Your motion can't", 607-finalCameraX, 330-finalCameraY);
-    ctx.fillText("be controlled in", 612-finalCameraX, 353-finalCameraY);
-    ctx.fillText("the air, except by", 602-finalCameraX, 376-finalCameraY);
-    ctx.fillText("your directional", 612-finalCameraX, 399-finalCameraY);
-    ctx.fillText("double jump.", 640-finalCameraX, 422-finalCameraY);
-    ctx.fillText("Jump carfully.", 628-finalCameraX, 460-finalCameraY);
-    ctx.font = "18px monospace"
-    ctx.fillText("Most things in this game are left to be discovered by", 109-finalCameraX, 120-finalCameraY);
-    ctx.fillText("yourself. Make experiments, and don't be afraid to fall:", 98-finalCameraX, 140-finalCameraY);
-    ctx.fillText("You will do so often.", 282-finalCameraX, 160-finalCameraY);
-  } else if (level === 1) {
-    ctx.fillStyle = "rgb(150, 150, 150)";
-    ctx.font = "24px monospace";
-    ctx.textAlign = "center";
-    ctx.fillText("L", 150-finalCameraX, 1130-finalCameraY);
-    ctx.font = "16px monospace";
-    ctx.fillText("Open Level", 150-finalCameraX, 1150-finalCameraY);
-    ctx.fillText("Select", 150-finalCameraX, 1165-finalCameraY);
-  } else if (level === 5) {
-    ctx.fillStyle = "rgb(130, 130, 130)";
-    ctx.font = "16px monospace";
-    ctx.fillText("Minor note about semisolids:", 55-finalCameraX, 320-finalCameraY);
-    ctx.fillText("You can only stand on top of", 55-finalCameraX, 350-finalCameraY);
-    ctx.fillText("a semisolid if you aren't", 55-finalCameraX, 370-finalCameraY);
-    ctx.fillText("currently inside (or partly", 55-finalCameraX, 390-finalCameraY);
-    ctx.fillText("inside) of one.", 55-finalCameraX, 410-finalCameraY);
+    if (level === 0) {
+      ctx.fillStyle = "rgb(150, 150, 150)";
+      ctx.font = "24px monospace";
+      ctx.fillText("W", 143-finalCameraX, 420-finalCameraY);
+      ctx.fillText("A S D", 114-finalCameraX, 450-finalCameraY);
+      ctx.font = "18px monospace"
+      ctx.fillText("Your motion can't", 607-finalCameraX, 330-finalCameraY);
+      ctx.fillText("be controlled in", 612-finalCameraX, 353-finalCameraY);
+      ctx.fillText("the air, except by", 602-finalCameraX, 376-finalCameraY);
+      ctx.fillText("your directional", 612-finalCameraX, 399-finalCameraY);
+      ctx.fillText("double jump.", 640-finalCameraX, 422-finalCameraY);
+      ctx.fillText("Jump carfully.", 628-finalCameraX, 460-finalCameraY);
+      ctx.font = "18px monospace"
+      ctx.fillText("Most things in this game are left to be discovered by", 109-finalCameraX, 120-finalCameraY);
+      ctx.fillText("yourself. Make experiments, and don't be afraid to fall:", 98-finalCameraX, 140-finalCameraY);
+      ctx.fillText("You will do so often.", 282-finalCameraX, 160-finalCameraY);
+    } else if (level === 1) {
+      ctx.fillStyle = "rgb(150, 150, 150)";
+      ctx.font = "24px monospace";
+      ctx.textAlign = "center";
+      ctx.fillText("L", 150-finalCameraX, 1130-finalCameraY);
+      ctx.font = "16px monospace";
+      ctx.fillText("Open Level", 150-finalCameraX, 1150-finalCameraY);
+      ctx.fillText("Select", 150-finalCameraX, 1165-finalCameraY);
+    } else if (level === 5) {
+      ctx.fillStyle = "rgb(130, 130, 130)";
+      ctx.font = "16px monospace";
+      ctx.fillText("Minor note about semisolids:", 55-finalCameraX, 320-finalCameraY);
+      ctx.fillText("You can only stand on top of", 55-finalCameraX, 350-finalCameraY);
+      ctx.fillText("a semisolid if you aren't", 55-finalCameraX, 370-finalCameraY);
+      ctx.fillText("currently inside (or partly", 55-finalCameraX, 390-finalCameraY);
+      ctx.fillText("inside) of one.", 55-finalCameraX, 410-finalCameraY);
+    }
   }
   
   //Draw player
